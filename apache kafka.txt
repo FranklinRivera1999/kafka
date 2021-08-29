@@ -1,0 +1,17 @@
+Iniciar zookeeper
+.\bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+Iniciar Apache kafka 
+.\bin\windows\kafka-server-start.bat config\server.properties
+
+Crear Topicos 
+.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test 
+
+Listar Topicos
+.\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181 
+
+# Productor
+.\bin\windows\kafka-console-producer.sh --broker-list localhost:2181 --topic test
+
+# Consumidor
+.\bin\windows\kafka-console-consumer.sh --bootstrap-server localhost:2181 --topic test --from-beginning
